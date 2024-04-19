@@ -1,8 +1,17 @@
 package TicTacToe.Models;
 
-public class BotPlayer extends Player {
-    private BotDifficultyLevel difficultyLevel;
+import TicTacToe.stratgies.BotPlayingStrategy;
+import TicTacToe.stratgies.BotPlayingStrategyFactory;
 
+public class BotPlayer extends Player {
+
+    private BotDifficultyLevel difficultyLevel;
+    private BotPlayingStrategy botPlayingStrategy;
+    BotPlayer(int id, String name,Symbol playerSymbol, BotDifficultyLevel difficultyLevel) {
+        super(id,name,PlayerType.BOT_PLAYER,playerSymbol);
+        this.difficultyLevel = difficultyLevel;
+        this.botPlayingStrategy = BotPlayingStrategyFactory.getBotPlayingStrategyByDifficultyLevel(this.difficultyLevel);
+    }
     public BotDifficultyLevel getDifficultyLevel() {
         return difficultyLevel;
     }

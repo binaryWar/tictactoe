@@ -14,7 +14,7 @@ public class GameController {
             List<Player> players,
             List<WinningStrategy>winningStrategies
     ){
-        return new Game(dimension, players, winningStrategies);
+        return Game.getGameBuilder().setDimension(dimension).setPlayers(players).setWinningStrategies(winningStrategies).build();
     }
     public void displayBoard(Game game){}
     public void makeMove(Game game){
