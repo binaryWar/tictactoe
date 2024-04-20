@@ -1,9 +1,6 @@
 package TicTacToe.Controllers;
 
-import TicTacToe.Models.Board;
-import TicTacToe.Models.Game;
-import TicTacToe.Models.GameState;
-import TicTacToe.Models.Player;
+import TicTacToe.Models.*;
 import TicTacToe.stratgies.WinningStrategy;
 
 import java.util.List;
@@ -16,16 +13,20 @@ public class GameController {
     ){
         return Game.getGameBuilder().setDimension(dimension).setPlayers(players).setWinningStrategies(winningStrategies).build();
     }
-    public void displayBoard(Game game){}
+    public void displayBoard(Game game){
+      game.displayBoard();
+    }
     public void makeMove(Game game){
-
+        game.makeMove();
     }
     public GameState chekcGameState(Game game){
-        return null;
+        return game.getGameState();
     }
-    public void undo(Game game){}
+    public void undo(Game game){
+        game.undo();
+    }
     public String getWinner(Game game){
-        return null;
+        return game.getWinner().getName();
     }
 }
 // client to gameController - > Service

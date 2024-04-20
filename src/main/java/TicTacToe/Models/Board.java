@@ -8,6 +8,7 @@ public class Board {
     private List<List<Cell>> grid;
     public Board(int size) {
         this.size = size;
+        this.grid = new ArrayList<>();
         for(int i=0;i<size;i++){
             grid.add(new ArrayList<>());
             for(int j=0;j<size;j++){
@@ -29,5 +30,17 @@ public class Board {
 
     public void setGrid(List<List<Cell>> grid) {
         this.grid = grid;
+    }
+    void fillSymbol(int i, int j, Player player) {
+        this.grid.get(i).get(j).setPlayer(player);
+        this.grid.get(i).get(j).setCellState(CellState.FILLED);
+    }
+    public void displayBoard(){
+        for (List<Cell> row : grid) {
+            for (Cell cell : row) {
+                cell.printCell();
+            }
+            System.out.println();
+        }
     }
 }
